@@ -543,7 +543,9 @@ WORKDIR /test-app       # Set working directory
 
 COPY . /test-app        # Copy app files
 
-CMD ["node", "/test-app/server.js"] # Default command when container starts
+RUN npm install         # Installs express + mongodb v6.13.0
+
+CMD ["node", "/test-app/server.js"] # Default command when container starts - Runs your exact file
 ```
 
 ### Build & Run
