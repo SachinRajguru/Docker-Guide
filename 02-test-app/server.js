@@ -1,65 +1,108 @@
-const express = require("express");        // Import Express framework
-const app = express();                     // Create Express app
-const path = require("path");              // Import path module for file paths
-const MongoClient = require("mongodb").MongoClient;  // Import MongoDB client
+// Import required modules
+const express = require("express");                // Web framework for building APIs and handling HTTP requests
+const app = express();                             // Initialize Express application
+const path = require("path");                      // Utility module for handling file and directory paths
+const MongoClient = require("mongodb").MongoClient; // MongoDB client for database interaction
 
-const PORT = 5050;                         // Server port number
+const PORT = 5050;                                 // Port on which the server will run
 
-// Middleware to parse form data from HTML forms
+// -------------------- MIDDLEWARE --------------------
+
+// Middleware to parse URL-encoded data (form submissions from HTML)
+// 'extended: true' allows parsing of nested objects
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (CSS, HTML, images) from 'public' folder
+// Middleware to serve static assets (HTML, CSS, JS, images) from the 'public' directory
+// This allows direct access to files like index.html via browser
 app.use(express.static("public"));
 
-// MongoDB connection string - connects to MongoDB container
-const MONGO_URL = "mongodb://admin:qwerty@mongo:27017";  // Use 'mongo' service name from docker-compose
-const client = new MongoClient(MONGO_URL);               // Create MongoDB client
+// -------------------- DATABASE CONFIGURATION --------------------
 
-// Serve homepage
+// MongoDB connection string
+// - Use 'localhost:27017' when running Node.js directly on your machine
+// - Use 'mongo:27017' when running inside Docker (service name acts as hostname in Docker network)
+const MONGO_URL = "mongodb://admin:qwerty@localhost:27017";
+
+// Create a MongoDB client instance
+// NOTE: In production, you should connect once at app startup and reuse the client across requests
+// Current implementation connects/closes per request (not optimal but acceptable for learning/demo)
+const client = new MongoClient(MONGO_URL);
+
+// -------------------- ROUTES --------------------
+
+// Root route - serves the main HTML page
 app.get("/", (req, res) => {
+    // Send index.html file from 'public' directory
     res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// GET all users - displays all users from database
+// GET /getUsers
+// Fetch all user documents from 'users' collection in 'college-db'
 app.get("/getUsers", async (req, res) => {
     try {
-        await client.connect();                    // Connect to MongoDB
-        console.log('Connected successfully to server');
+        // Establish connection to MongoDB server
+        await client.connect();
+        console.log('Connected to MongoDB');
 
-        const db = client.db("college-db");        // Select 'college-db' database
-        const data = await db.collection('users').find({}).toArray();  // Get all users
-        
-        client.close();                            // Close connection
-        res.send(data);                            // Send users as JSON
+        // Select database
+        const db = client.db("college-db");
+
+        // Retrieve all documents from 'users' collection
+        const data = await db.collection('users').find({}).toArray();
+
+        // Close database connection (per-request lifecycle - not recommended for production)
+        client.close();
+
+        // Send retrieved data as JSON response
+        res.send(data);
     } catch (error) {
+        // Log error for debugging
         console.error("Error:", error);
+
+        // Send generic error response to client
         res.status(500).send("Database error");
     }
 });
 
-// POST new user - saves new user to database
+// POST /addUser
+// Insert a new user document into 'users' collection
 app.post("/addUser", async (req, res) => {
     try {
-        const userObj = req.body;                  // Get form data (email, username, password)
+        // Extract form data from request body (e.g., email, username, password)
+        const userObj = req.body;
         console.log("New user:", userObj);
-        
-        await client.connect();                    // Connect to MongoDB
-        console.log('Connected successfully to server');
 
-        const db = client.db("college-db");        // Select 'college-db' database
-        const data = await db.collection('users').insertOne(userObj);  // Insert new user
+        // Establish connection to MongoDB
+        await client.connect();
+        console.log('Connected to MongoDB');
+
+        // Select database
+        const db = client.db("college-db");
+
+        // Insert new document into 'users' collection
+        const data = await db.collection('users').insertOne(userObj);
+
+        // Log insertion result (contains insertedId and metadata)
         console.log("Inserted:", data);
         console.log("✅ Data inserted in DB");
-        
-        client.close();                            // Close connection
-        res.send("User created successfully!");    // Send success response
+
+        // Close database connection
+        client.close();
+
+        // Send success response
+        res.send("User created successfully!");
     } catch (error) {
+        // Log error for debugging
         console.error("Error:", error);
+
+        // Send failure response
         res.status(500).send("Failed to create user");
     }
 });
 
-// Start server
+// -------------------- SERVER START --------------------
+
+// Start the Express server and listen on defined PORT
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
