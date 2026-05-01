@@ -1,25 +1,115 @@
+/* ===== Global Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Body Styling ===== */
 body {
-    text-align: center;
+    font-family: 'Inter', sans-serif;
 }
-#formBtn {
+
+/* ===== Layout Container ===== */
+.main {
+    display: flex;
+    height: 100vh;
+}
+
+/* ===== Left Panel (Branding Section) ===== */
+.left {
+    flex: 1;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
     color: white;
-    background-color:coral;
-    border: none;
-    border-radius: 2px;
-    padding: 0.25rem 1rem;
-    margin-top: 1rem;
-    cursor: pointer;
-    font-size: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
 }
 
-form {
-    border: 2px solid grey;
-    display: inline-block;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    text-align: left;
+.left h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
-.field {
+.left p {
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
+}
+
+.left span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ===== Right Panel ===== */
+.right {
+    flex: 1;
+    background: #f9fafb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== Card (Form Container) ===== */
+.card {
+    background: white;
+    padding: 2.5rem;
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== Form Fields ===== */
+.field {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-size: 0.85rem;
+    color: #444;
+}
+
+input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #4f46e5;
+}
+
+/* ===== Button ===== */
+.btn {
+    width: 100%;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 6px;
+    background: #4f46e5;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #4338ca;
 }

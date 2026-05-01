@@ -3,30 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css" type="text/css" />
-    <title>Home Page</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>XYZ University</title>
 </head>
+
 <body>
-    <h1>Hi student, Welcome to XYZ University!</h1>
-    <p>You can sign up to the platform to access all important notes & lectures.</p>
 
-    <form action="/addUser" method="POST" target="_blank" id="signupForm">
-        <div class="field">
-            <label for="email">Email: </label>
-            <input type="text" placeholder="jane@email.com" name="email">
+<!-- ===== Main Layout Container ===== -->
+<div class="main">
+
+    <!-- ===== Left Panel: Branding Section ===== -->
+    <div class="left">
+        <h1>XYZ University</h1>
+        <p>Learn. Build. Grow.</p>
+        <span>Access notes, lectures, and hands-on labs.</span>
+    </div>
+
+    <!-- ===== Right Panel: Signup Form ===== -->
+    <div class="right">
+        <div class="card">
+
+            <h2>Create Account</h2>
+            <p class="subtitle">Start your learning journey</p>
+
+            <!-- ===== Signup Form ===== -->
+            <form action="/addUser" method="POST" target="_blank">
+
+                <div class="field">
+                    <label>Email</label>
+                    <input type="text" placeholder="you@example.com" name="email" required>
+                </div>
+
+                <div class="field">
+                    <label>Username</label>
+                    <input type="text" placeholder="John Doe" name="username" required>
+                </div>
+
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" name="password" required>
+                </div>
+
+                <button class="btn">Create Account</button>
+
+            </form>
+
         </div>
-        <div class="field">    
-        <label for="username">Username: </label>
-            <input type="text" placeholder="Jane Doe" name="username">
-        </div>
-        <div class="field">
-            <label for="password">Password: </label>
-            <input type="password" placeholder="password" name="password">
-        </div>
-        
-        <button id="formBtn">Create Account</button>
-        
-    </form>
+    </div>
+
+</div>
+
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>XYZ University</title>
+</head>
+
+<body>
+
+<!-- ===== Main Layout Container ===== -->
+<div class="main">
+
+    <!-- ===== Left Panel: Branding Section ===== -->
+    <div class="left">
+        <h1>XYZ University</h1>
+        <p>Learn. Build. Grow.</p>
+        <span>Access notes, lectures, and hands-on labs.</span>
+    </div>
+
+    <!-- ===== Right Panel: Signup Form ===== -->
+    <div class="right">
+        <div class="card">
+
+            <h2>Create Account</h2>
+            <p class="subtitle">Start your learning journey</p>
+
+            <!-- ===== Signup Form ===== -->
+            <form action="/addUser" method="POST" target="_blank">
+
+                <div class="field">
+                    <label>Email</label>
+                    <input type="text" placeholder="you@example.com" name="email" required>
+                </div>
+
+                <div class="field">
+                    <label>Username</label>
+                    <input type="text" placeholder="John Doe" name="username" required>
+                </div>
+
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" name="password" required>
+                </div>
+
+                <button class="btn">Create Account</button>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
 </html>
