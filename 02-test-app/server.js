@@ -1,4 +1,4 @@
-// Import required modules
+// Import required modules:
 const express = require("express");                // Web framework for building APIs and handling HTTP requests
 const app = express();                             // Initialize Express application
 const path = require("path");                      // Utility module for handling file and directory paths
