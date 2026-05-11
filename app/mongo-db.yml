@@ -1,0 +1,52 @@
+# Docker Compose version
+version: '3.8'
+
+# Define all services (containers)
+services:
+
+  # ===== Node.js Application Service =====
+  app:
+    build: .                     # Build image from Dockerfile in current directory
+    container_name: node-app     # Name of the running container
+    ports:
+      - "5050:5050"              # Map host port 5050 to container port 5050
+    depends_on:
+      - mongo                    # Ensure MongoDB starts before app
+    environment:
+      # MongoDB connection string (uses service name 'mongo' inside Docker network)
+      MONGO_URL: mongodb://admin:qwerty@mongo:27017
+    restart: always              # Auto-restart container if it crashes
+
+  # ===== MongoDB Database Service =====
+  mongo:
+    image: mongo                 # Official MongoDB image
+    container_name: mongo
+    ports:
+      - "27017:27017"            # Expose MongoDB port
+    environment:
+      # Root credentials for MongoDB
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: qwerty
+    volumes:
+      # Persist database data even if container stops
+      - mongo-data:/data/db
+
+  # ===== Mongo Express (GUI for MongoDB) =====
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    ports:
+      - "8081:8081"              # Web UI for MongoDB
+    environment:
+      # Credentials to connect to MongoDB
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: qwerty
+
+      # Internal Docker network URL for MongoDB
+      ME_CONFIG_MONGODB_URL: mongodb://admin:qwerty@mongo:27017/
+    depends_on:
+      - mongo
+
+# ===== Persistent Volume for MongoDB =====
+volumes:
+  mongo-data:

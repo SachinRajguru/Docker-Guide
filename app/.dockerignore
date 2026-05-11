@@ -1,0 +1,80 @@
+# --------------------------------------
+# Docker build context optimization
+# --------------------------------------
+
+# =========================
+# Node.js dependencies
+# =========================
+node_modules
+**/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# Git
+# =========================
+.git
+.gitignore
+.gitattributes
+
+# =========================
+# Docker (avoid recursion / unnecessary copies)
+# =========================
+docker-compose.yml
+docker-compose.override.yml
+.dockerignore
+
+# =========================
+# Logs
+# =========================
+logs
+*.log
+
+# =========================
+# Build output
+# =========================
+dist
+build
+coverage
+.next
+out
+
+# =========================
+# Temporary / Cache
+# =========================
+tmp
+temp
+.cache
+.tmp
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# =========================
+# Docker runtime / volumes
+# =========================
+data
+db
+volumes
+
+# =========================
+# Archives
+# =========================
+*.zip
+*.tar
+*.tar.gz
+*.gz
