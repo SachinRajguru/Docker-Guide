@@ -50,8 +50,8 @@ Imagine you are building a Node.js application.
 
 On your machine, you install:
 
-- Node.js v18
-- MongoDB v5
+- `Node.js v18`
+- `MongoDB v5`
 
 Everything works perfectly.
 
@@ -61,8 +61,8 @@ Now a new developer joins the team.
 
 They install:
 
-- Node.js v20
-- MongoDB v6
+- `Node.js v20`
+- `MongoDB v6`
 
 Suddenly:
 
@@ -76,7 +76,7 @@ The application that worked perfectly on your machine now behaves differently on
 
 This leads to the famous software development problem:
 
-**"It works on my machine!"**
+**"It works on my machine❗"**
 
 ### Why This Problem Happens
 
@@ -354,7 +354,7 @@ Everything is bundled into one container.
 - You build app on Machine A → create container
 - Send container to Machine B → run instantly
 
-➤ No setup needed!
+✓ No setup needed!
 
 ### Key Properties of Containers
 
@@ -382,8 +382,8 @@ Everything is bundled into one container.
 
 You can run:
 
-- Node v18 app 
-- Node v20 app 
+- `Node v18` app 
+- `Node v20` app 
 
 on the same machine without conflicts.
 
@@ -420,7 +420,7 @@ A Docker Image is:
 ```bash
 Docker Image (Blueprint)
         ↓
-   Docker Container (Running Instance)
+Docker Container (Running Instance)
 ```
 
 ### Analogy (Class vs Object)
@@ -461,7 +461,7 @@ Docker Image
 
 ## Your First Docker Experience
 
-Let's see Docker in action.
+Let's see `Docker` in action.
 
 ### Practical Example: Running Ubuntu Container
 
@@ -548,7 +548,7 @@ Host Machine (Mac)
 
 ## 3. Docker vs Virtual Machines
 
-Understanding the difference between Docker and Virtual Machines (VMs) is important because it explains why Docker exists and why it is widely adopted.
+Understanding the difference between `Docker` and `Virtual Machines (VMs)` is important because it explains why Docker exists and why it is widely adopted.
 
 ### Traditional System Architecture
 
@@ -604,7 +604,7 @@ VMs are:
 
 Docker virtualizes only:
 
-✓ Application layer
+- Application layer ✓ 
 
 Containers share the host OS kernel.
 
@@ -705,7 +705,7 @@ Let's install Docker Desktop. Before using Docker, we need to install it.
 
 ### Step 1: Visit Official Website
 
-Go to: [https://docker.com](https://docker.com)
+- Go to: [https://docker.com](https://docker.com)
 
 ### Step 2: Download Docker Desktop
 
@@ -823,7 +823,7 @@ We will increase complexity step-by-step:
 
 ## Lab 1: First Image — Hello World
 
-### What is hello-world Image?
+### What is `hello-world` Image?
 
 - Official Docker test image
 - Used to verify Docker installation
@@ -855,7 +855,7 @@ docker pull hello-world
 1. Docker client contacts Docker daemon
 2. Downloads `hello-world` image from Docker Hub  
 3. Image appears in Docker Desktop → Images tab
-4. Size: ~10KB (super lightweight!)
+4. Size: ~25KB (super lightweight!)
 
 ### Verify Images
 
@@ -867,16 +867,16 @@ docker images
 
 ```bash
 REPOSITORY    TAG       IMAGE ID       SIZE
-hello-world   latest    abc123         10kB
+hello-world   latest    abc123         25kB
 ```
 
-### Key Concept: Tags
+### Key Concept: `Tags`
 
 - Tags represent versions of images
 - Examples:
 
-  - node:18
-  - node:20
+  - `node:18`
+  - `node:20`
 
 ### Docker Desktop View
 
@@ -909,7 +909,7 @@ docker run hello-world
 Docker Client → Docker Daemon → Pull Image → Create Container → Run → Output
 ```
 
-### Output
+**Output**
 
 ```bash
 Hello from Docker!
@@ -967,8 +967,8 @@ root@container_id:/#
 ### Practice Inside Container
 
 ```bash
-ls            # list files and folders
-mkdir test    # create directory named test
+ls              # list files and folders
+mkdir test      # create directory named test
 touch hello.txt  # create empty file hello.txt
 env              # show environment variables
 ```
@@ -1050,8 +1050,8 @@ docker pull mysql:8.0
 
 Run different DB versions:
 
-- App 1 → MySQL latest
-- App 2 → MySQL 8.0
+- App 1 → `MySQL latest`
+- App 2 → `MySQL 8.0`
 
 ### Diagram
 
@@ -1125,7 +1125,7 @@ Docker images are built using layers.
 
 A Docker image is made up of multiple layers stacked on top of each other.
 
-When a container is created, a new **writable layer** (called the container layer) is added on top of these image layers.
+When a container is created, a new **writable layer** (called the `container layer`) is added on top of these image layers.
 
 ### Diagram
 
@@ -1268,16 +1268,16 @@ To enable caching and reuse, which makes builds and pulls faster and more effici
 
 Let's understand how containers communicate externally by connecting them to the host.
 
-### Container Ports vs Host Ports
+### `Container Ports` vs `Host Ports`
 
 - Containers have their own ports
 - These ports are isolated from the host
 
-### Problem
+### ❗ Problem
 
 Container port ≠ Host port
 
-### Solution: Port Binding
+### ✓ Solution: `Port Binding`
 
 Mapping host port → container port
 
@@ -1311,15 +1311,15 @@ Host:8080  ─────────→  Container:3306
 
 ```bash
 Host Machine          Container
-  8080 ──────────────→ 5050 (Node.js app)
-  5000 ──────────────→ 5050 (Another app)
+  8080 ──────────────→ 5050 (Node.js app 1 container)
+  5000 ──────────────→ 5050 (Node.js app 2 container)
 ```
 
-### Problem
+### ❗ Problem
 
 Container ports (5050) ≠ Host ports (8080, 5000)
 
-### Solution
+### ✓ Solution
 
 Use port mapping:
 
@@ -1394,7 +1394,7 @@ docker run -d -e MYSQL_ROOT_PASSWORD=secret mysql
 - Database credentials 
 - API keys 
 
-**Interview Questions**
+### Interview Questions
 
 **Q: Why use environment variables?**
 
@@ -1449,13 +1449,13 @@ SHOW DATABASES;
 
 ### Use Cases
 
-- Check logs
+- Check `logs`
 - Inspect environment
 - Debug application issues
 
 ### Docker Desktop Tip
 
-- Open container → Logs tab
+- Open container → `Logs` tab
 
 ### Important Note
 
@@ -1479,7 +1479,7 @@ SHOW DATABASES;
 
 ## 9. Using Containers to Build a Node Application
 
-Sample Application Setup (Node.js + MongoDB)
+Sample Application Setup (`Node.js` + `MongoDB`)
 
 ### Project Structure
 
@@ -1505,9 +1505,7 @@ app/
 - `GET /getUsers` → Fetch all users from MongoDB.
 - `POST /addUser` → Add new user into MongoDB.
 
-**Server:**
-
-Runs on: **Port 5050**
+**Server:** Runs on: **Port 5050**
 
 ### Frontend
 
@@ -1516,7 +1514,7 @@ Runs on: **Port 5050**
   - Create account
   - Submit data
 
-### Start server.js for Demo (Local Testing)
+### Start `server.js` for Demo (Local Testing)
 
 ```bash
 cd app
@@ -1541,16 +1539,16 @@ curl http://localhost:5050/getUsers
 
 **Stop server:** `Ctrl+C`
 
-### Problem
+### ❗ Problem
 
 ✗ MongoDB is not installed locally
 
-➤ **Solution:** Use Docker containers
+### ✓ Solution: Use Docker containers
 
 We will use 2 images:
 
-1. MongoDB → Database
-2. Mongo Express → UI for DB 
+1. `MongoDB` → Database
+2. `Mongo Express` → UI for DB 
 
 ## Docker Network Concept
 
@@ -1578,13 +1576,13 @@ Container A ✗ Container B
 
 ### Commands
 
-**List networks**
+- **`List` networks**
 
 ```bash
 docker network ls
 ```
 
-**Create network**
+- **`Create` network**
 
 ```bash
 docker network create mongo-network
@@ -1592,7 +1590,7 @@ docker network create mongo-network
 
 ### Mini Summary
 
-- Docker networks allow containers to communicate seamlessly without exposing ports.
+Docker networks allow containers to communicate seamlessly without exposing ports.
 
 ## Run MongoDB Container
 
@@ -1673,15 +1671,15 @@ Login:
 
 ## Test with Backend API
 
-### GET Request
+### `GET` Request
 
-[http://localhost:5050/getUsers](http://localhost:5050/getUsers)
+- [http://localhost:5050/getUsers](http://localhost:5050/getUsers)
 
 ✓ Returns inserted data
 
-### POST Request
+### `POST` Request
 
-Add user via `UI` → reflected in `DB`
+- Add user via `UI` → reflected in `DB`
 
 ### Architecture Flow
 
@@ -1697,7 +1695,7 @@ Mongo Express   (UI)
 
 ## 10. Docker Compose (Multi-Container Applications)
 
-Tool to define & run multi-container applications
+Docker Compose is a tool to define & run multi-container applications
 
 ### ❗ Problem
 
@@ -1707,7 +1705,7 @@ Running multiple `docker run` commands is:
 - Hard to manage
 - Not scalable
 
-### ✓ Solution: Docker Compose
+### ✓ Solution: `Docker Compose`
 
 Uses a YAML file to define and run multiple containers
 
@@ -1739,35 +1737,37 @@ services:
 
 - `services` = containers 
 - Auto network creation - Default network is created automatically
-- Services communicate using names (e.g., mongo)
+- Services communicate using names (e.g., `mongo`)
 - Easier manage and update
 
 ### Run Docker Compose
 
-#### Start Services
+- **Start Services**
 
-- Command: `docker compose -f <filename>.yaml up -d`
+Command: `docker compose -f <filename>.yaml up -d`
 
 ```bash
 cd app                                    # move into app directory
 docker compose -f mongodb.yml up -d       # create and start containers in detached mode    
 ```
 
+Explanation
+
 - `up` = create and start containers
 - `-d` = detached mode
 
-#### Stop & Remove
+- **Stop & Remove**
 
-- Command: `docker compose -f <file-name>.yaml down`
+Command: `docker compose -f <file-name>.yaml down`
 
 ```bash
 cd app                                    # move into app directory
 docker compose -f mongodb.yml down        # stop and remove containers
 ```
 
-#### View Logs
+- **View Logs**
 
-- Command: `docker compose -f <file-name>.yaml logs`
+Command: `docker compose -f <file-name>.yaml logs`
 
 ```bash
 cd app                                    # move into app directory
@@ -1798,13 +1798,13 @@ docker compose -f mongodb.yml logs        # view container logs
 
 ## Important Concept: Data Persistence
 
-**Problem:**
+### ❗ Problem
 
 - Data is lost when containers restart
 
-**Solution:**
+### ✓ Solution:
 
-- Use volumes (covered later)
+- Use `volumes` (covered later)
 
 ---
 
@@ -1816,7 +1816,7 @@ Now we package our Node.js app into a Docker image.
 
 Converting your application → `Docker Image` → `Container`
 
-### Tool: Dockerfile
+### Tool: `Dockerfile`
 
 A Dockerfile is a blueprint used to build Docker images.
 
@@ -1836,9 +1836,9 @@ Code → CI/CD (Jenkins) → Docker Image → Registry → Deployment
 
 Dockerizing enables easy sharing and deployment of applications.
 
-### Writing and Understanding a Dockerfile
+## Writing and Understanding a Dockerfile
 
-**Example Dockerfile**
+### Example Dockerfile
 
 ```dockerfile
 FROM node:18                  # Base image (Node runtime)
@@ -1891,7 +1891,7 @@ CMD ["node", "server.js"]     # Default command when container starts - Runs you
 
 ### Build & Run
 
-**Build Image**
+- **Build Image**
 
 ```bash
 cd app                              # move into app directory
@@ -1902,7 +1902,7 @@ docker build -t test-app:1.0 .      # build Docker image with name and tag
 docker images                       # list available Docker images
 ```
 
-**Run Container**
+- **Run Container**
 
 ```bash
 docker run test-app:1.0             # create and start container from image
@@ -1914,7 +1914,7 @@ docker run test-app:1.0             # create and start container from image
 docker run -it test-app:1.0 bash    # start container in interactive terminal mode
 ```
 
-**Result**: Node app runs inside container (port 5050)
+**✓ Result**: Node app runs inside container (port 5050)
 
 ### Important Insight
 
@@ -1960,7 +1960,7 @@ A blueprint used to build Docker images.
 ### Industry Flow
 
 1. Code pushed
-2. CI/CD (Jenkins)
+2. CI/CD (`Jenkins`)
 3. Build Docker image
 4. Push to registry
 5. Deploy containers
@@ -2004,7 +2004,7 @@ In real-world development, you need to:
 
 This is where `Docker Hub` becomes useful.
 
-## What is Docker Hub?
+## What is `Docker Hub`?
 
 ### Definition
 
@@ -2025,7 +2025,7 @@ Think of Docker Hub like GitHub—but for Docker images instead of source code.
 
 To publish an image, you first need a Docker Hub account.
 
-**Steps**
+**Steps**:
 
 1. Sign up on Docker Hub [https://hub.docker.com](https://hub.docker.com)
 2. Open **Repositories**
@@ -2066,7 +2066,7 @@ docker build -t username/test-application .
 
 ### Step 2: Login to Docker Hub
 
-**Method 1: CLI Login**
+**Method 1: `CLI Login`**
 
 ```bash
 docker login
@@ -2077,7 +2077,7 @@ Then enter:
 - Username
 - Password
 
-**Method 2: Browser Authentication**
+**Method 2: `Browser Authentication`**
 
 Docker may provide:
 
@@ -2108,7 +2108,7 @@ Pushed
 Stored on Docker Hub
 ```
 
-**✓ Verify on Docker Hub**
+### ✓ Verify on Docker Hub
 
 Refresh your repository page.
 
@@ -2127,7 +2127,7 @@ A company builds a Node.js application:
 2. Pushes it to `Docker Hub`
 3. Team members pull and run it instantly
 
-No manual setup required.
+➤ No manual setup required.
 
 ### Analogy
 
@@ -2205,11 +2205,11 @@ docker pull username/test-application
 
 ## 13. Docker Volumes (Data Persistence)
 
-Containers are ephemeral by nature.
+Containers are `ephemeral` by nature.
 
 This section introduces Docker Volumes, which provide persistent storage beyond the container lifecycle.
 
-### ❗ Problem Statement
+### ❗ Problem
 
 In a container:
 
@@ -2231,7 +2231,7 @@ Volumes provide persistent storage independent of containers.
 
 ### Definition
 
-Docker Volumes = Persistent storage for containers
+`Docker Volumes` = Persistent storage for containers
 
 ### Analogy
 
@@ -2264,7 +2264,7 @@ Even if:
 - Container restarts
 - Container is deleted
 
-Data remains safe
+✓ Data remains safe
 
 ### Key Benefits
 
@@ -2322,7 +2322,7 @@ touch index.html server.js
 
 The same files appear in the host (Desktop/data) directory.
 
-**Restart Container**
+- **`Restart` Container**
 
 Even after restart:
 
@@ -2332,7 +2332,7 @@ docker start <container_id>
 
 ✓ Files remain intact
 
-**Delete Container**
+- **`Delete` Container**
 
 Even after:
 
@@ -2368,11 +2368,11 @@ The volume and its data remain intact.
 
 Docker Compose simplifies volume management.
 
-### ❗Problem
+### ❗ Problem
 
 MongoDB data is lost when container restarts or recreated. 
 
-### ✓ Solution: Add Volume in Compose
+### ✓ Solution: Add `Volume` in Compose
 
 **docker-compose.yml**
 
@@ -2402,7 +2402,7 @@ docker compose up
 3. Delete containers
 4. Restart
 
-➤ Data still exists
+✓ Data still exists
 
 ### Real-World Use Cases
 
@@ -2467,19 +2467,19 @@ Direct host mapping to host filesystem
 
 ### Volume Cleanup
 
-**List Volumes**
+- **`List` Volumes**
 
 ```bash
 docker volume ls
 ```
 
-**Remove Unused Volumes**
+- **`Remove` Unused Volumes**
 
 ```bash
 docker volume prune
 ```
 
-**Important**
+### Important
 
 - Removes unused volumes only
 - Commonly removes anonymous volumes
@@ -2505,7 +2505,7 @@ docker volume prune
 - `prune` → Removes unused volumes
 - `rm` → Removes a specific volume
 
-**Important Insight**
+### Important Insight
 
 Volumes become useful only when attached to containers.
 
@@ -2545,7 +2545,7 @@ Docker networking defines:
                         Internet
 ```
 
-**Command**
+### Command
 
 ```bash
 docker network ls
@@ -2562,7 +2562,7 @@ Lists all available Docker networks.
 
 Docker provides three main network drivers.
 
-**Default Network Drivers**
+### Default Network Drivers
 
 | Network   | Purpose                         |
 | --------- | ------------------------------- |
@@ -2592,7 +2592,7 @@ Container B ─┘
 
 Bridge network = Local LAN network
 
-**Types of Bridge Networks**
+### Types of Bridge Networks
 
 - Default bridge
 - Custom bridge (recommended for better control)
@@ -2618,7 +2618,7 @@ docker network create my-network
 
 - High-performance or low-latency applications.
 
-## 3. Null Network
+### 3. Null Network
 
 - No network access
 - Fully isolated container
@@ -2629,12 +2629,12 @@ docker network create my-network
 
 ### Interview Questions
 
-**Q1: What is a bridge network?**
+**Q1: What is a `bridge` network?**
 
 **Answer:**
 The default Docker network that enables communication between containers on the same host.
 
-**Q2: Difference between host and bridge network?**
+**Q2: Difference between `host` and `bridge` network?**
 
 **Answer:**
 
@@ -2646,3 +2646,9 @@ The default Docker network that enables communication between containers on the 
 - `Bridge` → Most commonly used
 - `Host` → Better performance
 - `Null` → Complete isolation
+
+---
+
+### References
+
+[Open Docker Commands](../cheatsheets/docker-commands.md)
