@@ -3,9 +3,7 @@
 
 > 📌 This cheatsheet is designed for quick revision and hands-on Docker practice.
 
-**Production-Ready Quick Reference**
-
----
+### Production-Ready Quick Reference
 
 ## 🖼️ IMAGES
 
@@ -18,8 +16,6 @@
 | `docker build -t <name>:<tag> . --no-cache` | Build without cache | `docker build -t myapp:latest . --no-cache` |
 
 > 💡 **Pro Tip:** Always tag images (`:latest`, `:1.0`) for better version management.
-
----
 
 ## 📦 CONTAINERS
 
@@ -46,8 +42,6 @@ docker run -d \
   myapp:1.0
 ```
 
----
-
 ## 🔧 TROUBLESHOOTING
 
 | Command                            | Description                      | Example                       |
@@ -69,8 +63,6 @@ docker logs my-app
 docker exec -it my-app bash
 ```
 
----
-
 ## 🌐 DOCKER HUB
 
 | Command                          | Description                    | Example                            |
@@ -88,8 +80,6 @@ docker build -t devcollege/myapp:1.0 .
 docker login
 docker push devcollege/myapp:1.0
 ```
-
----
 
 ## 💾 VOLUMES (Data Persistence)
 
@@ -135,8 +125,6 @@ volumes:
 docker volume prune
 ```
 
----
-
 ## 🌉 NETWORKS
 
 | Command                        | Description            | Example                             |
@@ -158,8 +146,6 @@ docker run --network app-net --name api myapp
 # Connection example:
 # postgres://db:5432
 ```
-
----
 
 ## ⚡ Useful One-Liner Commands
 
@@ -187,8 +173,6 @@ docker stats
 docker info
 ```
 
----
-
 ## 🎯 Best Practices & Common Mistakes
 
 ```bash
@@ -205,8 +189,6 @@ docker info
 ❌ Avoid copying unnecessary files into containers
 ```
 
----
-
 ## 🧠 Memory Hook — "PICS"
 
 **P**ull → **I**mages → **C**reate → **S**hare
@@ -217,8 +199,6 @@ docker images
 docker run nginx
 docker push my-nginx
 ```
-
----
 
 ### 🏆 Quick Reminder
 
