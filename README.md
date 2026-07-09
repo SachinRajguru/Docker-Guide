@@ -220,7 +220,7 @@ It is a must-have skill for:
 
 Start here:
 
-➤ `docs/01-docker-guide.md`
+➤ [docs/01-docker-guide.md](./docs/docker-guide.md)
 
 Then follow the workflow:
 
